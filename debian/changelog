@@ -1,0 +1,15 @@
+ros-foxy-nerian-stereo (1.0.3-1focal) focal; urgency=high
+
+  * Updated vision software release
+  * fixed point cloud color channel issue with large RGB images
+  * Contributors: Konstantin Schauwecker
+
+ -- Konstantin Schauwecker <konstantin.schauwecker@nerian.com>  Mon, 28 Feb 2022 23:00:00 -0000
+
+ros-foxy-nerian-stereo (1.0.0-1focal) focal; urgency=high
+
+  * Initial release for ROS2
+
+ -- Konstantin Schauwecker <konstantin.schauwecker@nerian.com>  Tue, 13 Apr 2021 22:00:00 -0000
+
+
