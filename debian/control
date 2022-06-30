@@ -1,0 +1,12 @@
+Source: ros-galactic-nerian-stereo
+Section: misc
+Priority: optional
+Maintainer: Konstantin Schauwecker <konstantin.schauwecker@nerian.com>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-cv-bridge, ros-galactic-rosidl-default-generators, ros-galactic-sensor-msgs, ros-galactic-std-msgs, ros-galactic-stereo-msgs, ros-galactic-tf2, ros-galactic-tf2-ros, ros-galactic-ros-workspace, ros-galactic-rosidl-typesupport-fastrtps-c, ros-galactic-rosidl-typesupport-fastrtps-cpp
+Homepage: http://wiki.ros.org/nerian_stereo
+Standards-Version: 3.9.2
+
+Package: ros-galactic-nerian-stereo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-ament-cmake, ros-galactic-cv-bridge, ros-galactic-rosidl-default-generators, ros-galactic-rosidl-default-runtime, ros-galactic-sensor-msgs, ros-galactic-std-msgs, ros-galactic-stereo-msgs, ros-galactic-tf2, ros-galactic-tf2-ros, ros-galactic-ros-workspace
+Description: Driver node for ROS 2 for Scarlet, SceneScan and SP1 stereo vision sensors by Nerian Vision GmbH
