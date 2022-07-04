@@ -1,3 +1,26 @@
+## nerian_stereo_ros2 (galactic) - 1.1.1-1
+
+The packages in the `nerian_stereo_ros2` repository were released into the `galactic` distro by running `/usr/bin/bloom-release --rosdistro galactic --track galactic nerian_stereo_ros2` on `Mon, 04 Jul 2022 08:46:00 -0000`
+
+The `nerian_stereo` package was released.
+
+Version of package(s) in repository `nerian_stereo_ros2`:
+
+- upstream repository: https://github.com/nerian-vision/nerian_stereo_ros2.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `1.1.0-1`
+- new version: `1.1.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.20.0`
+- rosdistro version: `0.8.3`
+- vcstools version: `0.1.42`
+
+
 ## nerian_stereo_ros2 (foxy) - 1.1.1-1
 
 The packages in the `nerian_stereo_ros2` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --rosdistro foxy --track foxy nerian_stereo_ros2 -y` on `Mon, 04 Jul 2022 08:41:52 -0000`
