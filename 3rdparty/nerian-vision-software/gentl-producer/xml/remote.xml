@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RegisterDescription
+    ModelName="SceneScan_SceneScanPro_Scarlet"
+    VendorName="Nerian_Vision_GmbH"
+    ToolTip="SceneScan_SceneScanPro_Scarlet"
+    StandardNameSpace="None"
+    SchemaMajorVersion="1"
+    SchemaMinorVersion="1"
+    SchemaSubMinorVersion="0"
+    MajorVersion="$major"
+    MinorVersion="$minor"
+    SubMinorVersion="$subminor"
+    ProductGuid="ac1c6f72-b410-41b7-82e6-fa049db075a4"
+    VersionGuid="$guid"
+    xmlns="http://www.genicam.org/GenApi/Version_1_1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.genicam.org/GenApi/Version_1_1 http://www.genicam.org/GenApi/GenApiSchema_Version_1_1.xsd">
+
+    <!-- Categories -->
+
+    <Category Name="Root" NameSpace="Standard">
+        <pFeature>DeviceControl</pFeature>
+        <pFeature>AcquisitionControl</pFeature>
+        <pFeature>AnalogControl</pFeature>
+        <pFeature>ImageFormatControl</pFeature>
+        <pFeature>TransportLayerControl</pFeature>
+        <pFeature>Scan3dControl</pFeature>
+        <pFeature>Metadata</pFeature>
+    </Category>
+
+    <Category Name="DeviceControl" NameSpace="Standard">
+        <pFeature>DeviceVendorName</pFeature>
+        <pFeature>DeviceModelName</pFeature>
+        <pFeature>DeviceManufacturerInfo</pFeature>
+        <pFeature>DeviceID</pFeature>
+        <!--pFeature>DeviceSerialNumber</pFeature-->
+    </Category>
+
+    <Category Name="AcquisitionControl" NameSpace="Standard">
+        <pFeature>AcquisitionMode</pFeature>
+        <pFeature>AcquisitionStart</pFeature>
+        <pFeature>AcquisitionStop</pFeature>
+        <pFeature>TriggerSelector</pFeature>
+        <pFeature>TriggerMode</pFeature>
+        <pFeature>TriggerSource</pFeature>
+        <pFeature>TriggerSoftware</pFeature>
+        <pFeature>ExposureMode</pFeature>
+        <!--pFeature>ExposureTimeMode</pFeature-->
+        <pFeature>ExposureTimeSelector</pFeature>
+        <pFeature>ExposureTime</pFeature>
+        <pFeature>ExposureAuto</pFeature>
+    </Category>
+
+    <Category Name="AnalogControl" NameSpace="Standard">
+        <pFeature>GainSelector</pFeature>
+        <pFeature>Gain</pFeature>
+        <pFeature>GainAuto</pFeature>
+        <pFeature>BalanceRatioSelector</pFeature>
+        <pFeature>BalanceRatio</pFeature>
+        <pFeature>BalanceWhiteAuto</pFeature>
+    </Category>
+
+    <Category Name="ImageFormatControl" NameSpace="Standard">
+        <pFeature>SensorHeight</pFeature>
+        <pFeature>SensorWidth</pFeature>
+        <pFeature>OffsetX</pFeature>
+        <pFeature>OffsetY</pFeature>
+        <pFeature>Width</pFeature>
+        <pFeature>Height</pFeature>
+        <pFeature>BinningHorizontal</pFeature>
+        <pFeature>BinningVertical</pFeature>
+        <pFeature>PixelFormat</pFeature>
+        <pFeature>ComponentSelector</pFeature>
+        <pFeature>ComponentEnable</pFeature>
+        <pFeature>ComponentIDValue</pFeature>
+        <pFeature>IntensitySource</pFeature>
+    </Category>
+
+    <Category Name="TransportLayerControl" NameSpace="Standard">
+        <pFeature>PayloadSize</pFeature>
+        <pFeature>TLParamsLocked</pFeature>
+    </Category>
+
+    <Category Name="Scan3dControl" NameSpace="Standard">
+        <pFeature>Scan3dFocalLength</pFeature>
+        <pFeature>Scan3dBaseline</pFeature>
+        <pFeature>Scan3dInvalidDataFlag</pFeature>
+        <pFeature>Scan3dInvalidDataValue</pFeature>
+        <pFeature>Scan3dPrincipalPointU</pFeature>
+        <pFeature>Scan3dPrincipalPointV</pFeature>
+        <pFeature>Scan3dOutputMode</pFeature>
+        <pFeature>Scan3dCoordinateScale</pFeature>
+        <pFeature>Scan3dCoordinateOffset</pFeature>
+    </Category>
+
+    <Category Name="Metadata" NameSpace="Custom">
+        <pFeature>QMatrixIndex</pFeature>
+        <pFeature>QMatrixData</pFeature>
+    </Category>
+
+    <Port Name="Device" NameSpace="Standard">
+    </Port>
+
+    <!-- Device control -->
+
+    <StringReg Name="DeviceVendorName" NameSpace="Standard">
+        <Address>0xE0001000</Address>
+        <Length>128</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+    </StringReg>
+
+    <StringReg Name="DeviceModelName" NameSpace="Standard">
+        <Address>0xE0002000</Address>
+        <Length>128</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+    </StringReg>
+
+    <StringReg Name="DeviceManufacturerInfo" NameSpace="Standard">
+        <Address>0xE0001000</Address>
+        <Length>128</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+    </StringReg>
+
+    <StringReg Name="DeviceID" NameSpace="Standard">
+        <Address>0xE0000000</Address>
+        <Length>128</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+    </StringReg>
+
+    <!--StringReg Name="DeviceSerialNumber" NameSpace="Standard">
+        <Address>0xE0007000</Address>
+        <Length>128</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+    </StringReg-->
+
+    <IntReg Name="DeviceFeatureReg" NameSpace="Custom">
+        <!-- Nerian device feature bit map. Used to mask/unmask features with pIsAvailable and IntSwissKnife -->
+        <!-- Child feature address index 0xff -->
+        <Address>0xC00FF000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <!-- Acquisition control -->
+
+    <Command Name="AcquisitionStart" NameSpace="Standard">
+        <ImposedAccessMode>WO</ImposedAccessMode>
+        <Value>0</Value>
+        <CommandValue>0</CommandValue>
+    </Command>
+
+    <Command Name="AcquisitionStop" NameSpace="Standard">
+        <ImposedAccessMode>WO</ImposedAccessMode>
+        <Value>0</Value>
+        <CommandValue>0</CommandValue>
+    </Command>
+
+    <Enumeration Name="AcquisitionMode" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <EnumEntry Name="Continuous" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <Value>1</Value>
+    </Enumeration>
+
+    <!-- Trigger control (inside category Acquisition) -->
+
+    <Enumeration Name="TriggerSelector" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <EnumEntry Name="AcquisitionStart" NameSpace="Standard"> <!-- TODO test FrameStart -->
+            <Value>1</Value>
+        </EnumEntry>
+        <Value>1</Value>
+    </Enumeration>
+
+    <Enumeration Name="TriggerMode" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <EnumEntry Name="Off" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="On" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <Value>0</Value>
+    </Enumeration>
+
+    <Enumeration Name="TriggerSource" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <EnumEntry Name="Software" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <Value>1</Value>
+    </Enumeration>
+
+    <Command Name="TriggerSoftware" NameSpace="Standard">
+        <ImposedAccessMode>WO</ImposedAccessMode>
+        <Value>0</Value>
+        <CommandValue>0</CommandValue>
+    </Command>
+
+    <!-- Exposure control (inside category Acquisition) -->
+    <Enumeration Name="ExposureTimeSelector" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="StereoCamera" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="ColorCamera" NameSpace="Standard">
+            <pIsAvailable>ThirdCameraPresent</pIsAvailable>
+            <Value>1</Value>
+        </EnumEntry>
+        <pValue>ExposureTimeSelectorReg</pValue>
+        <pSelected>ExposureTime</pSelected>
+        <pSelected>ExposureTimeReg</pSelected>
+        <pSelected>ExposureTimeMinReg</pSelected>
+        <pSelected>ExposureTimeMaxReg</pSelected>
+    </Enumeration>
+    <IntReg Name="ExposureTimeSelectorReg" NameSpace="Custom">
+        <Address>0xC0019000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Enumeration Name="ExposureMode" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <EnumEntry Name="Timed" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <Value>1</Value>
+    </Enumeration>
+    <Float Name="ExposureTime" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pValue>ExposureTimeReg</pValue>
+        <pMin>ExposureTimeMinReg</pMin>
+        <pMax>ExposureTimeMaxReg</pMax>
+    </Float>
+    <FloatReg Name="ExposureTimeReg" NameSpace="Custom">
+        <Address>0xC000B000</Address>
+        <Length>8</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <FloatReg Name="ExposureTimeMinReg" NameSpace="Custom">
+        <Address>0xC000C000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <FloatReg Name="ExposureTimeMaxReg" NameSpace="Custom">
+        <Address>0xC000D000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <Enumeration Name="ExposureAuto" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="Off" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="Continuous" NameSpace="Standard">
+            <Value>2</Value>
+        </EnumEntry>
+        <pValue>ExposureAutoReg</pValue>
+    </Enumeration>
+    <IntReg Name="ExposureAutoReg" NameSpace="Custom">
+        <Address>0xC000E000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <!-- Gain control (inside category Analog) -->
+    <Enumeration Name="GainSelector" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="StereoCamera" NameSpace="Custom">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="ColorCamera" NameSpace="Custom">
+            <pIsAvailable>ThirdCameraPresent</pIsAvailable>
+            <Value>1</Value>
+        </EnumEntry>
+        <pValue>GainSelectorReg</pValue>
+        <pSelected>Gain</pSelected>
+        <pSelected>GainReg</pSelected>
+        <pSelected>GainMinReg</pSelected>
+        <pSelected>GainMaxReg</pSelected>
+    </Enumeration>
+    <IntReg Name="GainSelectorReg" NameSpace="Custom">
+        <Address>0xC001A000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Float Name="Gain" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pValue>GainReg</pValue>
+        <pMin>GainMinReg</pMin>
+        <pMax>GainMaxReg</pMax>
+    </Float>
+    <FloatReg Name="GainReg" NameSpace="Custom">
+        <Address>0xC000F000</Address>
+        <Length>8</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <FloatReg Name="GainMinReg" NameSpace="Custom">
+        <Address>0xC0010000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <FloatReg Name="GainMaxReg" NameSpace="Custom">
+        <Address>0xC0011000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <Enumeration Name="GainAuto" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="Off" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="Continuous" NameSpace="Standard">
+            <Value>2</Value>
+        </EnumEntry>
+        <pValue>GainAutoReg</pValue>
+    </Enumeration>
+    <IntReg Name="GainAutoReg" NameSpace="Custom">
+        <Address>0xC0012000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <!-- White balance control (inside category Analog) -->
+
+    <IntSwissKnife Name="BalanceControlAvailable" NameSpace="Custom">
+        <pVariable Name="bitmask">DeviceFeatureReg</pVariable>
+        <Formula>bitmask &amp; 2</Formula> <!-- Bit 1: availability of balance control -->
+    </IntSwissKnife>
+    <Enumeration Name="BalanceRatioSelector" NameSpace="Standard">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="Red" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <EnumEntry Name="Blue" NameSpace="Standard">
+            <Value>3</Value>
+        </EnumEntry>
+        <pValue>BalanceRatioSelectorReg</pValue>
+        <pSelected>BalanceRatio</pSelected>
+        <pSelected>BalanceRatioReg</pSelected>
+        <pSelected>BalanceRatioMinReg</pSelected>
+        <pSelected>BalanceRatioMaxReg</pSelected>
+    </Enumeration>
+    <IntReg Name="BalanceRatioSelectorReg" NameSpace="Custom">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <Address>0xC0013000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+    <Float Name="BalanceRatio" NameSpace="Standard">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pValue>BalanceRatioReg</pValue>
+        <pMin>BalanceRatioMinReg</pMin>
+        <pMax>BalanceRatioMaxReg</pMax>
+    </Float>
+    <FloatReg Name="BalanceRatioReg" NameSpace="Custom">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <Address>0xC0014000</Address>
+        <Length>8</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <FloatReg Name="BalanceRatioMinReg" NameSpace="Custom">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <Address>0xC0015000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <FloatReg Name="BalanceRatioMaxReg" NameSpace="Custom">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <Address>0xC0016000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+    <Enumeration Name="BalanceWhiteAuto" NameSpace="Standard">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="Off" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="Continuous" NameSpace="Standard">
+            <Value>2</Value>
+        </EnumEntry>
+        <pValue>BalanceWhiteAutoReg</pValue>
+    </Enumeration>
+    <IntReg Name="BalanceWhiteAutoReg" NameSpace="Custom">
+        <pIsAvailable>BalanceControlAvailable</pIsAvailable>
+        <Address>0xC0017000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <!-- Image format control -->
+
+    <Integer Name="SensorWidth" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>SensorWidthReg</pValue>
+        <pMin>SensorWidthReg</pMin>
+        <pMax>SensorWidthReg</pMax>
+    </Integer>
+    <IntReg Name="SensorWidthReg" NameSpace="Custom">
+        <Address>0xC0000000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Integer Name="SensorHeight" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>SensorHeightReg</pValue>
+        <pMin>SensorHeightReg</pMin>
+        <pMax>SensorHeightReg</pMax>
+    </Integer>
+    <IntReg Name="SensorHeightReg" NameSpace="Custom">
+        <Address>0xC0001000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Integer Name="OffsetX" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <Value>0</Value>
+        <Min>0</Min>
+        <Max>0</Max>
+    </Integer>
+
+    <Integer Name="OffsetY" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <Value>0</Value>
+        <Min>0</Min>
+        <Max>0</Max>
+    </Integer>
+
+    <Integer Name="Width" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>WidthReg</pValue>
+        <pMin>WidthReg</pMin>
+        <pMax>WidthReg</pMax>
+    </Integer>
+    <IntReg Name="WidthReg" NameSpace="Custom">
+        <Address>0xC0000000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Integer Name="Height" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>HeightReg</pValue>
+        <pMin>HeightReg</pMin>
+        <pMax>HeightReg</pMax>
+    </Integer>
+    <IntReg Name="HeightReg" NameSpace="Custom">
+        <Address>0xC0001000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Integer Name="BinningHorizontal" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <Value>1</Value>
+        <Min>1</Min>
+        <Max>1</Max>
+    </Integer>
+
+    <Integer Name="BinningVertical" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <Value>1</Value>
+        <Min>1</Min>
+        <Max>1</Max>
+    </Integer>
+
+    <Enumeration Name="PixelFormat" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pInvalidator>IntensitySource</pInvalidator> <!-- changing the source may change the pixel format for Intensity -->
+        <EnumEntry Name="Mono8" NameSpace="Standard">
+            <Value>0x01080001</Value>
+        </EnumEntry>
+        <EnumEntry Name="Mono12" NameSpace="Standard">
+            <Value>0x01100005</Value>
+        </EnumEntry>
+        <EnumEntry Name="Coord3D_ABC32f" NameSpace="Standard">
+            <Value>0x026000C0</Value>
+        </EnumEntry>
+        <EnumEntry Name="RGB8" NameSpace="Standard">
+            <Value>0x02180014</Value>
+        </EnumEntry>
+        <pValue>PixelFormatValue</pValue>
+    </Enumeration>
+
+    <Integer Name="PixelFormatValue" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pIndex>ComponentSelectorReg</pIndex>
+        <pValueIndexed Index="0">PixelFormatReg</pValueIndexed>
+        <ValueIndexed Index="1">0x01100005</ValueIndexed>
+        <ValueIndexed Index="2">0x026000C0</ValueIndexed>
+        <ValueDefault>0x01080001</ValueDefault>
+    </Integer>
+
+    <IntReg Name="PixelFormatReg" NameSpace="Custom">
+        <Address>0xC0002000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Enumeration Name="ComponentSelector" NameSpace="Standard">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pInvalidator>IntensitySource</pInvalidator> <!-- changing the source may change the pixel format for Intensity -->
+
+        <EnumEntry Name="Intensity" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="Disparity" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <EnumEntry Name="Range" NameSpace="Standard">
+            <Value>2</Value>
+        </EnumEntry>
+
+        <pValue>ComponentSelectorReg</pValue>
+        <pSelected>PixelFormat</pSelected>
+        <pSelected>ComponentEnable</pSelected>
+        <pSelected>ComponentIDValue</pSelected>
+        <pSelected>Scan3dInvalidDataFlag</pSelected>
+        <pSelected>Scan3dInvalidDataValue</pSelected>
+    </Enumeration>
+    <IntReg Name="ComponentSelectorReg" NameSpace="Custom">
+        <Address>0xD0000000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <pInvalidator>ComponentSelector</pInvalidator>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Boolean Name="ComponentEnable" NameSpace="Standard">
+        <pIsLocked>ComponentEnableWriteLocked</pIsLocked>
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pValue>ComponentEnableIntConv</pValue>
+    </Boolean>
+    <!-- Interim state: toggling ComponentEnable is just possible for Range (point cloud calc) -->
+    <IntSwissKnife Name="ComponentEnableWriteLocked" NameSpace="Custom">
+        <pInvalidator>ComponentEnable</pInvalidator>
+        <pVariable Name="selval">ComponentSelector</pVariable>
+        <Formula>(selval = 2) ? 0 : 1</Formula>
+    </IntSwissKnife>
+    <IntConverter Name="ComponentEnableIntConv" NameSpace="Custom">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pVariable Name="regval">ComponentEnableReg</pVariable>
+        <pVariable Name="selval">ComponentSelector</pVariable>
+        <FormulaTo>  <![CDATA[ ( FROM ? (regval | (1<<selval)) : (regval & (0x7-(1<<selval))) ) & 0x7 ]]></FormulaTo>
+        <FormulaFrom><![CDATA[ (regval & (1<<selval)) > 0 ]]></FormulaFrom>
+        <pValue>ComponentEnableReg</pValue>
+        <Slope>Varying</Slope> <!-- Mandatory! Set operation fails with default Slope==Automatic -->
+    </IntConverter>
+    <IntReg Name="ComponentEnableReg" NameSpace="Custom">
+        <Address>0xC0004000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Integer Name="ComponentIDValue" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pIndex>ComponentSelectorReg</pIndex>
+        <ValueIndexed Index="0">1</ValueIndexed>
+        <ValueIndexed Index="1">8</ValueIndexed>
+        <ValueIndexed Index="2">4</ValueIndexed>
+        <ValueDefault>1</ValueDefault>
+        <Min>0</Min>
+        <Max>15</Max>
+    </Integer>
+
+    <!-- Nerian-specific features -->
+    <!-- Source for the multipart 'Intensity' channel, for models with more than 2 cameras -->
+    <IntSwissKnife Name="ThirdCameraPresent" NameSpace="Custom">
+        <pVariable Name="bitmask">DeviceFeatureReg</pVariable>
+        <Formula>bitmask &amp; 1</Formula> <!-- Bit 0: availability of third camera -->
+    </IntSwissKnife>
+    <Enumeration Name="IntensitySource" NameSpace="Custom">
+        <pIsAvailable>ThirdCameraPresent</pIsAvailable>
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <EnumEntry Name="Auto" NameSpace="Standard">
+            <Value>0</Value>
+        </EnumEntry>
+        <EnumEntry Name="LeftCamera" NameSpace="Standard">
+            <Value>1</Value>
+        </EnumEntry>
+        <EnumEntry Name="ColorCamera" NameSpace="Standard">
+            <Value>2</Value>
+        </EnumEntry>
+        <pValue>IntensitySourceReg</pValue>
+    </Enumeration>
+    <IntReg Name="IntensitySourceReg" NameSpace="Custom">
+        <Address>0xC0018000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <!-- Transport layer control -->
+
+    <Integer Name="PayloadSize" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pInvalidator>ComponentEnable</pInvalidator>
+        <pInvalidator>IntensitySource</pInvalidator> <!-- changing the source may change the pixel format for Intensity -->
+        <pValue>PayloadSizeReg</pValue>
+        <Min>1</Min>
+        <Max>0xFFFFFFFF</Max>
+    </Integer>
+    <IntReg Name="PayloadSizeReg" NameSpace="Custom">
+        <Address>0xC0003000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <pInvalidator>ComponentEnable</pInvalidator>
+        <Sign>Unsigned</Sign>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Integer Name="TLParamsLocked" NameSpace="Standard">
+        <Visibility>Invisible</Visibility>
+        <Value>0</Value>
+        <Min>0</Min>
+        <Max>1</Max>
+    </Integer>
+
+    <!-- Scan3d control -->
+
+    <Float Name="Scan3dFocalLength" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>Scan3dFocalLengthReg</pValue>
+        <Unit>Pixel</Unit>
+    </Float>
+    <FloatReg Name="Scan3dFocalLengthReg" NameSpace="Custom">
+        <Address>0xC0006000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+
+    <Float Name="Scan3dBaseline" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>Scan3dBaselineReg</pValue>
+        <Unit>m</Unit>
+    </Float>
+    <FloatReg Name="Scan3dBaselineReg" NameSpace="Custom">
+        <Address>0xC0007000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+
+    <IntSwissKnife Name="InvalidIndex" NameSpace="Custom">
+        <pVariable Name="bitmask">ComponentEnableReg</pVariable>
+        <Formula>bitmask = 1 ? 0 : (bitmask = 2 ? 1 : 2)</Formula>
+    </IntSwissKnife>
+
+    <!-- Invalid data values: values are set internally in code
+      based on stream type and current component selector -->
+    <Boolean Name="Scan3dInvalidDataFlag" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pInvalidator>ComponentSelector</pInvalidator>
+        <pValue>Scan3dInvalidDataFlagReg</pValue>
+    </Boolean>
+    <IntReg Name="Scan3dInvalidDataFlagReg" NameSpace="Custom">
+        <Address>0xC001D000</Address>
+        <Length>4</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <pInvalidator>ComponentSelector</pInvalidator>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+
+    <Float Name="Scan3dInvalidDataValue" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pInvalidator>ComponentSelector</pInvalidator>
+        <pValue>Scan3dInvalidDataValueReg</pValue>
+    </Float>
+    <FloatReg Name="Scan3dInvalidDataValueReg" NameSpace="Custom">
+        <Address>0xC0008000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <pInvalidator>ComponentSelector</pInvalidator>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+
+    <Float Name="Scan3dPrincipalPointU" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>Scan3dPrincipalPointUReg</pValue>
+    </Float>
+    <FloatReg Name="Scan3dPrincipalPointUReg" NameSpace="Custom">
+        <Address>0xC0009000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+
+    <Float Name="Scan3dPrincipalPointV" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <pValue>Scan3dPrincipalPointVReg</pValue>
+    </Float>
+    <FloatReg Name="Scan3dPrincipalPointVReg" NameSpace="Custom">
+        <Address>0xC000A000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+
+    <Float Name="Scan3dCoordinateScale" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <Value>1.0</Value>
+    </Float>
+
+    <Float Name="Scan3dCoordinateOffset" NameSpace="Standard">
+        <Visibility>Expert</Visibility>
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <Value>0.0</Value>
+    </Float>
+
+    <Enumeration Name="Scan3dOutputMode" NameSpace="Standard">
+        <ImposedAccessMode>RO</ImposedAccessMode>
+        <EnumEntry Name="UncalibratedC" NameSpace="Standard">           <Value>0</Value></EnumEntry>
+        <EnumEntry Name="CalibratedABC_Grid" NameSpace="Standard">  <Value>1</Value>    </EnumEntry>
+        <EnumEntry Name="CalibratedABC_PointCloud" NameSpace="Standard"><Value>2</Value></EnumEntry>
+        <EnumEntry Name="CalibratedAC" NameSpace="Standard">            <Value>3</Value></EnumEntry>
+        <EnumEntry Name="CalibratedAC_Linescan" NameSpace="Standard">   <Value>4</Value></EnumEntry>
+        <EnumEntry Name="CalibratedC" NameSpace="Standard">             <Value>5</Value></EnumEntry>
+        <EnumEntry Name="CalibratedC_Linescan" NameSpace="Standard">    <Value>6</Value></EnumEntry>
+        <EnumEntry Name="RectifiedC" NameSpace="Standard">              <Value>7</Value></EnumEntry>
+        <EnumEntry Name="RectifiedC_Linescan" NameSpace="Standard">     <Value>8</Value></EnumEntry>
+        <EnumEntry Name="DisparityC" NameSpace="Standard">              <Value>9</Value></EnumEntry>
+        <EnumEntry Name="DisparityC_Linescan" NameSpace="Standard">     <Value>10</Value></EnumEntry>
+        <Value>1</Value>
+    </Enumeration>
+
+    <!-- Metadata (Nerian-specific custom data) -->
+    <!-- Read access to Q matrix (as 16-element data array) -->
+    <Integer Name="QMatrixIndex" NameSpace="Custom">
+        <ImposedAccessMode>RW</ImposedAccessMode>
+        <pValue>QMatrixIndexReg</pValue>
+        <Min>0</Min>
+        <Max>15</Max>
+    </Integer>
+    <IntReg Name="QMatrixIndexReg" NameSpace="Custom">
+        <Address>0xC001B000</Address>
+        <Length>4</Length>
+        <AccessMode>RW</AccessMode>
+        <pPort>Device</pPort>
+        <Endianess>LittleEndian</Endianess>
+    </IntReg>
+    <FloatReg Name="QMatrixData" NameSpace="Custom">
+        <Address>0xC001C000</Address>
+        <Length>8</Length>
+        <AccessMode>RO</AccessMode>
+        <pPort>Device</pPort>
+        <pInvalidator>QMatrixIndex</pInvalidator>
+        <pInvalidator>QMatrixIndexReg</pInvalidator>
+        <Endianess>LittleEndian</Endianess>
+    </FloatReg>
+
+</RegisterDescription>
+
