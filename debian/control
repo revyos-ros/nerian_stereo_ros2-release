@@ -1,0 +1,12 @@
+Source: ros-humble-nerian-stereo
+Section: misc
+Priority: optional
+Maintainer: Konstantin Schauwecker <konstantin.schauwecker@nerian.com>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ament-lint-auto, ros-humble-ament-lint-common, ros-humble-cv-bridge, ros-humble-rosidl-default-generators, ros-humble-sensor-msgs, ros-humble-std-msgs, ros-humble-stereo-msgs, ros-humble-tf2, ros-humble-tf2-ros, ros-humble-ros-workspace, ros-humble-rosidl-typesupport-fastrtps-c, ros-humble-rosidl-typesupport-fastrtps-cpp
+Homepage: http://wiki.ros.org/nerian_stereo
+Standards-Version: 3.9.2
+
+Package: ros-humble-nerian-stereo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-ament-cmake, ros-humble-cv-bridge, ros-humble-rosidl-default-generators, ros-humble-rosidl-default-runtime, ros-humble-sensor-msgs, ros-humble-std-msgs, ros-humble-stereo-msgs, ros-humble-tf2, ros-humble-tf2-ros, ros-humble-ros-workspace
+Description: Driver node for ROS 2 for Scarlet, SceneScan and SP1 stereo vision sensors by Nerian Vision GmbH
