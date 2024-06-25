@@ -1,0 +1,65 @@
+From a157da685b2608b202afe70dd177e2ab6cb2b86d Mon Sep 17 00:00:00 2001
+From: Sakura286 <sakura286@outlook.com>
+Date: Tue, 14 May 2024 15:33:17 +0800
+Subject: [PATCH] add stdexcept header
+
+---
+ .pc/.quilt_patches                 |  1 +
+ .pc/.quilt_series                  |  1 +
+ .pc/.version                       |  1 +
+ debian/patches/add-stdexcept.patch | 10 ++++++++++
+ debian/patches/series              |  1 +
+ 5 files changed, 14 insertions(+)
+ create mode 100644 .pc/.quilt_patches
+ create mode 100644 .pc/.quilt_series
+ create mode 100644 .pc/.version
+ create mode 100644 debian/patches/add-stdexcept.patch
+ create mode 100644 debian/patches/series
+
+diff --git a/.pc/.quilt_patches b/.pc/.quilt_patches
+new file mode 100644
+index 0000000..6857a8d
+--- /dev/null
++++ b/.pc/.quilt_patches
+@@ -0,0 +1 @@
++debian/patches
+diff --git a/.pc/.quilt_series b/.pc/.quilt_series
+new file mode 100644
+index 0000000..c206706
+--- /dev/null
++++ b/.pc/.quilt_series
+@@ -0,0 +1 @@
++series
+diff --git a/.pc/.version b/.pc/.version
+new file mode 100644
+index 0000000..0cfbf08
+--- /dev/null
++++ b/.pc/.version
+@@ -0,0 +1 @@
++2
+diff --git a/debian/patches/add-stdexcept.patch b/debian/patches/add-stdexcept.patch
+new file mode 100644
+index 0000000..4441b0e
+--- /dev/null
++++ b/debian/patches/add-stdexcept.patch
+@@ -0,0 +1,10 @@
++--- a/3rdparty/nerian-vision-software/libvisiontransfer/visiontransfer/datachannel-imu-bno080.h
+++++ b/3rdparty/nerian-vision-software/libvisiontransfer/visiontransfer/datachannel-imu-bno080.h
++@@ -21,6 +21,7 @@
++ #include <visiontransfer/sensorringbuffer.h>
++ 
++ #include <vector>
+++#include <stdexcept>
++ 
++ namespace visiontransfer {
++ namespace internal {
+diff --git a/debian/patches/series b/debian/patches/series
+new file mode 100644
+index 0000000..64eaf03
+--- /dev/null
++++ b/debian/patches/series
+@@ -0,0 +1 @@
++add-stdexcept.patch
+-- 
+2.41.0
+
