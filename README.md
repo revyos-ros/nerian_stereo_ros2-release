@@ -1,3 +1,26 @@
+## nerian_stereo_ros2 (humble) - 1.2.1-3
+
+The packages in the `nerian_stereo_ros2` repository were released into the `humble` distro by running `/home/z572/gits/revyos-ros/venv/bin/bloom-release -r humble nerian_stereo_ros2 --override-release-repository-push-url git@github.com:revyos-ros/nerian_stereo_ros2-release` on `Tue, 25 Jun 2024 16:33:51 -0000`
+
+The `nerian_stereo` package was released.
+
+Version of package(s) in repository `nerian_stereo_ros2`:
+
+- upstream repository: https://github.com/nerian-vision/nerian_stereo_ros2.git
+- release repository: https://github.com/revyos-ros/nerian_stereo_ros2-release.git
+- rosdistro version: `1.2.1-2`
+- old version: `1.2.1-2`
+- new version: `1.2.1-3`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.22.2`
+- rosdistro version: `0.9.0`
+- vcstools version: `0.1.42`
+
+
 ## nerian_stereo_ros2 (iron) - 1.2.1-1
 
 The packages in the `nerian_stereo_ros2` repository were released into the `iron` distro by running `/usr/bin/bloom-release --rosdistro iron --track iron nerian_stereo_ros2` on `Wed, 24 Jan 2024 08:21:55 -0000`
