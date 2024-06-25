@@ -1,3 +1,4 @@
+release_repo_url: git@github.com:revyos-ros/nerian_stereo_ros2-release
 tracks:
   foxy:
     actions:
