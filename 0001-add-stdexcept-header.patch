@@ -1,4 +1,4 @@
-From a157da685b2608b202afe70dd177e2ab6cb2b86d Mon Sep 17 00:00:00 2001
+From 12ea4b0e51cee37243b3802c51455e38471c2e21 Mon Sep 17 00:00:00 2001
 From: Sakura286 <sakura286@outlook.com>
 Date: Tue, 14 May 2024 15:33:17 +0800
 Subject: [PATCH] add stdexcept header
@@ -61,5 +61,5 @@ index 0000000..64eaf03
 @@ -0,0 +1 @@
 +add-stdexcept.patch
 -- 
-2.41.0
+2.45.2
 
